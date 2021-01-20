@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		canvas{
+			
+			border: 1px solid;
+		}
+	</style>
+	<body>
+		<canvas id='canvas'></canvas>
+		<input  id="ss" type="text" value="muse"/>
+		<input  type="submit" value="sub" />
+		
+		<script type="text/javascript">
+			function qr(){
+				var ip=document.getElementById('ss');
+				if(ip.valueOf()==this.yzm().sum){
+					console.log(sss)
+				}else{
+					console.log(傻逼)
+				}
+			}
+			qr();
+			
+			function yzm(){
+			var _c=document.querySelector("#canvas");
+			_c.width=500;
+			_c.height=200;
+			var ctx=_c.getContext('2d');
+			var w=500;
+			var h=200;
+			// 随机数
+			function sj(max,min){
+				// console.log(Math.floor(Math.random()*5));
+				// 一旦return方法就结束，后面写的都没有了，floor是向下取整，255只能取到最大254
+				return Math.floor(Math.random()*(max-min)+min);	
+			}
+			// 随机颜色
+			function ys(max,min){
+				var r=sj(min,max);
+				var g=sj(min,max);
+				var b=sj(max,min);
+				
+				return `rgb(${r},${g},${b})`
+			}
+			
+			ctx.fillStyle=ys(256,150);
+			ctx.fillRect(0,0,w,h);
+			// 字符串有下标，可以用数组S[]指定哪一个
+			// var s='qwertyuiioplkjhgfdsazxcvbnm123456789QWERTYUIOPLKJHGFDSAZXVBNMM';
+			// console.log(s[2])
+			
+			
+			
+			// 字体位置，x轴
+			var wz=sj(_c.width/4,0);
+			
+			var sum ='';
+			
+			function sz(){
+				var s='qwertyuiioplkjhgfdsazxcvbnm123456789QWERTYUIOPLKJHGFDSAZXVBNMM'
+				for(var i=0;i<4;i++){
+					
+					
+					// 字体大小,要变
+					var fs=sj(_c.width/4,_c.width/8);
+					// 字体位置，y轴
+					var wy=sj(_c.height-50,(_c.height/3)+50);
+					// 字体旋转的角度
+					var xz=sj(10,-10);
+					
+					var djs=s[sj(0,s.length)];
+					// ctx.translate(wz,wy);
+					sum+=djs;
+					ctx.font=fs+'px Verdana'
+					ctx.fillStyle=ys(100,0);
+					// ctx.textBaseline='lop';
+					// console.log(djs)
+					// ctx.restore();
+					
+					ctx.save();
+					
+					ctx.rotate(xz*Math.PI/180);
+					ctx.fillText(djs,(_c.width/5+100*i)-50,wy);
+					
+					ctx.restore();
+					// console.log(111)
+				}
+				console.log(sum)
+				return sum;
+				
+			}
+			
+			sz();
+			
+			function yd(){
+				for (var i=0;i<300;i++){
+					ctx.beginPath()
+					ctx.arc(sj(_c.width,0),sj(_c.height,0),1,0,2*Math.PI,false);
+					ctx.strokeStyle=ys(0,150)
+					ctx.stroke();
+					ctx.closePath();
+					
+				}
+				
+			}
+			yd();
+			
+			function cc(){
+				for(var i=0;i<50;i++){
+					ctx.beginPath()
+					ctx.lineTo(sj(_c.width,10),sj(_c.height,10))
+					ctx.lineTo(sj(_c.width,10),sj(_c.height,10))
+					ctx.stroke();
+					ctx.strokeStyle=ys(220,256);
+					ctx.closePath()
+				}
+				
+			}
+			cc();
+			
+			
+			}
+			yzm();
+		</script>
+	</body>
+	
+</html>
